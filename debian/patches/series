@@ -1,0 +1,2 @@
+0001-Use-the-correct-compiler-and-linker-flags.patch
+disable-few-tests-for-s390x.patch

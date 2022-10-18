@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE = 1
+export GEM2DEB_TEST_RUNNER = --check-dependencies
+#export DH_RUBY = --gem-install
+
+RUBY_VERSION=`ruby -e 'puts RbConfig::CONFIG["ruby_version"]'`
+RUBY_ARCH=`ruby -e 'puts RbConfig::CONFIG["arch"]'`
+
+%:
+	dh $@ --buildsystem=ruby --with ruby
+
+override_dh_install:
+	dh_install
+	mv $(CURDIR)/debian/ruby-http-parser/usr/share/rubygems-integration/$(RUBY_VERSION) \
+	   $(CURDIR)/debian/ruby-http-parser/usr/share/rubygems-integration/all
+	mkdir -p $(CURDIR)/debian/ruby-http-parser/usr/lib/$(RUBY_ARCH)/ruby/vendor_ruby/
+	find ext/ -name "libhttp-parser-ext.so" -exec cp "{}" $(CURDIR)/debian/ruby-http-parser/usr/lib/$(RUBY_ARCH)/ruby/vendor_ruby/ ";"

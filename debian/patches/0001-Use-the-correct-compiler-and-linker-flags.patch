@@ -1,0 +1,24 @@
+From: Daniel Leidert <dleidert@debian.org>
+Date: Fri, 3 Apr 2020 16:28:58 +0200
+Subject: Use the correct compiler and linker flags
+
+The linker flags used by upstream will lead to an empty debug symbols file.
+Also enabling hardening or disabling optimizatipon won't have any effect.
+---
+ ext/Rakefile | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+--- a/ext/Rakefile
++++ b/ext/Rakefile
+@@ -1,8 +1,7 @@
+ require 'ffi-compiler/compile_task'
+ 
+ FFI::Compiler::CompileTask.new('http-parser-ext') do |t|
+-  t.cflags << "-Wall -Wextra -O3"
+-  t.cflags << "-D_GNU_SOURCE=1" if RbConfig::CONFIG["host_os"].downcase =~ /mingw/
+-  t.cflags << "-arch x86_64" if t.platform.mac?
+-  t.ldflags << "-arch x86_64" if t.platform.mac?
++  t.cflags << ENV['CPPFLAGS'] ? ENV['CPPFLAGS'] : RbConfig::CONFIG["CPPFLAGS"]
++  t.cflags << ENV['CFLAGS'] ? ENV['CFLAGS'] : RbConfig::CONFIG["CFLAGS"]
++  t.ldflags << ENV['LDFLAGS'] ? ENV['LDFLAGS'] : RbConfig::CONFIG["LDFLAGS"]
+ end
