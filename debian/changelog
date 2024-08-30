@@ -1,3 +1,27 @@
+ruby-http-parser (1.2.3-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 1.2.3
+  * Update the patch to correct linker and compiler flags
+  * Bump Standards-Version to 4.6.2 (no changes needed)
+  * Fix build deps and remove {XS,XB}-Ruby-Versions fields
+
+ -- Ananthu C V <weepingclown@disroot.org>  Sat, 30 Dec 2023 16:53:00 +0530
+
+ruby-http-parser (1.2.1-6) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Debian Janitor ]
+  * Update standards version to 4.5.1, no changes needed.
+
+  [ HIGUCHI Daisuke (VDR dai) ]
+  * enable hardening.
+  * eliminate lintian warning: update-debian-copyright
+  * Update standards version to 4.6.1
+
+ -- HIGUCHI Daisuke (VDR dai) <dai@debian.org>  Tue, 19 Jul 2022 21:46:42 +0900
+
 ruby-http-parser (1.2.1-5) unstable; urgency=medium
 
   [ Debian Janitor ]

@@ -16,7 +16,11 @@ Copyright: Joyent, Inc. and other Node contributors. All rights reserved.
 License: Expat
 
 Files: debian/*
-Copyright: 2020, Utkarsh Gupta <utkarsh@debian.org>
+Copyright: 2020-2021 Utkarsh Gupta <utkarsh@debian.org>
+           2020 Daniel Leidert <dleidert@debian.org>
+           2020 Pirate Praveen <praveen@debian.org>
+           2020 Cédric Boutillier <boutil@debian.org>
+           2022 HIGUCHI Daisuke (VDR dai) <dai@debian.org>
 License: Expat
 
 License: Expat
